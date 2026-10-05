@@ -9,11 +9,11 @@ const { status } = Astro.props;
 const aktiv = status ? STEG.indexOf(status) : -1;
 
 const steg = [
-  { ikon: "📝", tittel: "Jeg lister opp", tekst: "Middager, lenker til oppskrifter, skjermbilder og andre varer, rett i Claude Code." },
-  { ikon: "🔎", tittel: "Claude sjekker priser og tilbud", tekst: "Varene matches mot Oda, og ukens tilbud tas med." },
-  { ikon: "🗒️", tittel: "Ukesmeny og handleliste", tekst: "Middagene settes opp, og alt slås sammen til én liste." },
-  { ikon: "🛒", tittel: "Claude fyller Oda-kurven", tekst: "I nettleseren, i min egen innloggede økt." },
-  { ikon: "✅", tittel: "Jeg trykker bestill", tekst: "Siste klikk er alltid mitt. Maten kommer mandag." },
+  { ikon: "📝", tittel: "Innspill", tekst: "Middager, oppskriftslenker, skjermbilder og øvrige varer samles i Claude Code." },
+  { ikon: "🔎", tittel: "Priser og tilbud", tekst: "Varene matches mot Odas sortiment, og ukens tilbud vurderes." },
+  { ikon: "🗒️", tittel: "Ukesmeny og handleliste", tekst: "Middagene planlegges, og alle varer samles i én handleliste." },
+  { ikon: "🛒", tittel: "Handlekurv", tekst: "Claude fyller Oda-kurven i nettleseren, i en innlogget brukerøkt." },
+  { ikon: "✅", tittel: "Godkjenning", tekst: "Bestillingen godkjennes manuelt før den sendes. Levering mandag." },
 ];
 ---
 

@@ -14,5 +14,5 @@
   "ekstra": [
     { "navn": "Kaffe", "mengde": 1, "enhet": "pk", "kategori": "Tørrvarer og hermetikk" }
   ],
-  "notat": "Eksempeluke laget fra rettbanken. Den første ekte uka settes sammen i Claude Code."
+  "notat": "Eksempeluke basert på rettbanken. Første reelle uke publiseres når den er satt sammen."
 }
