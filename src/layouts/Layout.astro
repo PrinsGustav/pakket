@@ -4,9 +4,10 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  bred?: boolean;
 }
 
-const { title, description = "AI planlegger middagene og fyller handlekurven. Jeg tar siste klikk." } = Astro.props;
+const { title, description = "AI planlegger middagene og fyller handlekurven. Jeg tar siste klikk.", bred = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +20,7 @@ const { title, description = "AI planlegger middagene og fyller handlekurven. Je
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body class="min-h-screen bg-krem text-stone-800 antialiased">
-    <main class="mx-auto max-w-2xl px-4 py-16">
+    <main class:list={["mx-auto px-4", bred ? "max-w-5xl py-8" : "max-w-2xl py-16"]}>
       <slot />
     </main>
   </body>
