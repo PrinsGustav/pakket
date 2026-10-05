@@ -1,29 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import UkeVisning from "../components/UkeVisning.astro";
+import { uker } from "../lib/uker";
+
+const [denne, ...tidligere] = uker;
 ---
 
-<Layout title="Pakket – middag uten planlegging">
-  <p class="text-sm font-semibold uppercase tracking-wide text-gronn">Et hobbyprosjekt</p>
-  <h1 class="mt-2 text-4xl font-bold tracking-tight">Pakket</h1>
-  <p class="mt-4 text-lg leading-relaxed">
-    Hver søndag foreslår AI en ukesmeny etter reglene våre: protein, tid på kjøkkenet og økologisk eller lavpris.
-    Vi velger retter, handlelisten lages automatisk og handlekurven fylles. Jeg tar siste klikk, og maten kommer mandag.
-  </p>
-  <p class="mt-4 text-lg leading-relaxed">
-    Målet er å bruke mindre tid på planlegging og handling. Jeg deler hva som virker, hva som ikke gjør det, og tallene underveis.
-  </p>
+<Layout title="Pakket – middag uten planlegging" bred>
+  <header class="max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-wide text-gronn">Et hobbyprosjekt</p>
+    <h1 class="mt-2 text-4xl font-bold tracking-tight">Pakket</h1>
+    <p class="mt-4 text-lg leading-relaxed">
+      Jeg lister opp middager og varer. Claude sjekker priser og tilbud hos Oda, setter sammen ukesmenyen og fyller
+      handlekurven. Jeg tar siste klikk, og maten kommer mandag. Her ser du hver uke som den ble.
+    </p>
+  </header>
 
-  <h2 class="mt-12 text-xl font-semibold">Status</h2>
-  <ul class="mt-3 space-y-2">
-    <li>✅ Siden er oppe</li>
-    <li>✅ Rettbank med 16 retter</li>
-    <li>✅ Ukesmeny og automatisk handleliste</li>
-    <li>⬜ Varer og priser fra Oda</li>
-    <li>⬜ Første automatiske handlekurv</li>
-  </ul>
+  <div class="mt-12">
+    {denne ? <UkeVisning uke={denne} /> : <p>Ingen uker ennå.</p>}
+  </div>
 
-  <p class="mt-12 text-sm text-stone-500">
+  {tidligere.length > 0 && (
+    <section class="mt-12">
+      <h2 class="text-lg font-semibold">Tidligere uker</h2>
+      <ul class="mt-3 flex flex-wrap gap-2">
+        {tidligere.map(u => (
+          <li>
+            <a href={`/uke/${u.uke}`} class="block rounded-full border border-stone-300 bg-white px-3 py-1 text-sm hover:border-gronn">
+              {u.tittel}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <footer class="mt-16 border-t border-stone-200 pt-6 text-sm text-stone-500">
     Laget av <a class="underline hover:text-gronn" href="https://www.linkedin.com/in/morten-sjolie/">Morten Sjølie</a>.
     Les mer på <a class="underline hover:text-gronn" href="https://www.hektar.no">hektar.no</a>.
-  </p>
+  </footer>
 </Layout>

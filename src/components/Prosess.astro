@@ -1,0 +1,40 @@
+---
+import { STEG, type Status } from "../lib/uker";
+
+interface Props {
+  status?: Status;
+}
+
+const { status } = Astro.props;
+const aktiv = status ? STEG.indexOf(status) : -1;
+
+const steg = [
+  { ikon: "📝", tittel: "Jeg lister opp", tekst: "Middager, lenker til oppskrifter, skjermbilder og andre varer, rett i Claude Code." },
+  { ikon: "🔎", tittel: "Claude sjekker priser og tilbud", tekst: "Varene matches mot Oda, og ukens tilbud tas med." },
+  { ikon: "🗒️", tittel: "Ukesmeny og handleliste", tekst: "Middagene settes opp, og alt slås sammen til én liste." },
+  { ikon: "🛒", tittel: "Claude fyller Oda-kurven", tekst: "I nettleseren, i min egen innloggede økt." },
+  { ikon: "✅", tittel: "Jeg trykker bestill", tekst: "Siste klikk er alltid mitt. Maten kommer mandag." },
+];
+---
+
+<ol class="grid gap-3 sm:grid-cols-5">
+  {steg.map((s, i) => (
+    <li
+      class:list={[
+        "relative rounded-xl border p-4",
+        i < aktiv && "border-gronn/30 bg-white",
+        i === aktiv && "border-gronn bg-white ring-2 ring-gronn/30",
+        i > aktiv && "border-stone-200 bg-white/50 text-stone-500",
+      ]}
+    >
+      <div class="flex items-center gap-2">
+        <span class="text-2xl" aria-hidden="true">{s.ikon}</span>
+        <span class:list={["text-xs font-semibold", i <= aktiv ? "text-gronn" : "text-stone-400"]}>
+          {i < aktiv ? "Ferdig" : i === aktiv ? "Nå" : `Steg ${i + 1}`}
+        </span>
+      </div>
+      <h3 class="mt-2 font-semibold leading-snug">{s.tittel}</h3>
+      <p class="mt-1 text-sm text-stone-600">{s.tekst}</p>
+    </li>
+  ))}
+</ol>

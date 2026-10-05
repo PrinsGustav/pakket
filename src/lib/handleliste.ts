@@ -28,7 +28,8 @@ export function formaterMengde(mengde: number, enhet: Enhet): string {
   return `${mengde.toLocaleString("nb-NO")} ${enhet}`;
 }
 
-export function lagHandleliste(valgte: Rett[], porsjoner: number, fasteVarer: Ingrediens[]): Handleliste {
+// porsjoner er totalt for retten, så «2 dager» for 3 personer gir 6 porsjoner.
+export function lagHandleliste(valgte: { rett: Rett; porsjoner: number }[], fasteVarer: Ingrediens[]): Handleliste {
   const linjer = new Map<string, Linje>();
   const basis = new Map<string, Set<string>>();
 
@@ -45,11 +46,11 @@ export function lagHandleliste(valgte: Rett[], porsjoner: number, fasteVarer: In
     linjer.set(nokkel, linje);
   };
 
-  for (const rett of valgte) {
+  for (const { rett, porsjoner } of valgte) {
     const faktor = porsjoner / rett.porsjoner;
     for (const ing of rett.ingredienser) leggTil(ing, faktor, rett.navn);
   }
-  for (const vare of fasteVarer) leggTil({ ...vare, basis: false }, 1, "Faste varer");
+  for (const vare of fasteVarer) leggTil({ ...vare, basis: false }, 1, "Faste og ekstra varer");
 
   const iLista = new Set([...linjer.values()].map(l => l.navn));
 

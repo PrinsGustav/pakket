@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import UkeVisning from "../../components/UkeVisning.astro";
+import { uker, type Uke } from "../../lib/uker";
+
+export function getStaticPaths() {
+  return uker.map(uke => ({ params: { uke: uke.uke }, props: { uke } }));
+}
+
+const { uke } = Astro.props as { uke: Uke };
+---
+
+<Layout title={`${uke.tittel} – Pakket`} bred>
+  <a href="/" class="text-sm font-semibold uppercase tracking-wide text-gronn">← Pakket</a>
+  <div class="mt-6">
+    <UkeVisning uke={uke} />
+  </div>
+</Layout>

@@ -1,0 +1,44 @@
+---
+import type { Rett, RettType } from "../data/retter";
+
+interface Props {
+  rett: Rett;
+  dager: number;
+}
+
+const { rett, dager } = Astro.props;
+
+const stil: Record<RettType, { ikon: string; bg: string; navn: string }> = {
+  fisk: { ikon: "🐟", bg: "from-sky-100 to-sky-200", navn: "Fisk" },
+  kylling: { ikon: "🍗", bg: "from-amber-100 to-amber-200", navn: "Kylling" },
+  kjøtt: { ikon: "🥩", bg: "from-rose-100 to-rose-200", navn: "Kjøtt" },
+  egg: { ikon: "🍳", bg: "from-yellow-100 to-yellow-200", navn: "Egg" },
+  vegetar: { ikon: "🥕", bg: "from-lime-100 to-lime-200", navn: "Vegetar" },
+};
+const s = stil[rett.type];
+---
+
+<article class="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+  <div class:list={["relative flex h-32 items-center justify-center bg-gradient-to-br", s.bg]}>
+    {rett.bilde
+      ? <img src={rett.bilde} alt={rett.navn} class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+      : <span class="text-5xl" aria-hidden="true">{s.ikon}</span>}
+    {dager > 1 && (
+      <span class="absolute right-3 top-3 rounded-full bg-gronn px-2.5 py-1 text-xs font-semibold text-white">
+        {dager} dager
+      </span>
+    )}
+  </div>
+  <div class="p-4">
+    <h3 class="font-semibold leading-snug">{rett.navn}</h3>
+    <p class="mt-1 text-sm text-stone-600">{rett.beskrivelse}</p>
+    <div class="mt-3 flex flex-wrap gap-1.5 text-xs">
+      <span class="rounded-full bg-stone-100 px-2 py-0.5 text-stone-700">{s.navn}</span>
+      <span class="rounded-full bg-stone-100 px-2 py-0.5 text-stone-700">⏱ {rett.minutter} min</span>
+      <span class="rounded-full bg-stone-100 px-2 py-0.5 text-stone-700">💪 ca. {rett.proteinPerPorsjon} g protein</span>
+    </div>
+    {rett.kilde && (
+      <a href={rett.kilde} class="mt-3 inline-block text-sm text-gronn underline" rel="noopener">Oppskrift</a>
+    )}
+  </div>
+</article>

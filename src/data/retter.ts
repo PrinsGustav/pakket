@@ -21,9 +21,15 @@ export interface Ingrediens {
   basis?: boolean;
 }
 
+export type RettType = "fisk" | "kylling" | "kjøtt" | "egg" | "vegetar";
+
 export interface Rett {
   id: string;
   navn: string;
+  type: RettType;
+  beskrivelse: string;
+  kilde?: string;
+  bilde?: string;
   minutter: number;
   proteinPerPorsjon: number;
   porsjoner: number;
@@ -45,6 +51,8 @@ export const retter: Rett[] = [
   {
     id: "laks-i-ovn",
     navn: "Laks i ovn med poteter og brokkoli",
+    type: "fisk",
+    beskrivelse: "Ovnsbakt laks med sitron, kokte poteter og dampet brokkoli.",
     minutter: 30,
     proteinPerPorsjon: 35,
     porsjoner: 3,
@@ -60,6 +68,8 @@ export const retter: Rett[] = [
   {
     id: "kyllingwok",
     navn: "Kyllingwok med nudler",
+    type: "kylling",
+    beskrivelse: "Rask wok med kylling, grønnsaker og eggnudler i soyasaus.",
     minutter: 20,
     proteinPerPorsjon: 40,
     porsjoner: 3,
@@ -75,6 +85,8 @@ export const retter: Rett[] = [
   {
     id: "taco",
     navn: "Taco",
+    type: "kjøtt",
+    beskrivelse: "Fredagsklassikeren med kjøttdeig, grønnsaker, ost og rømme.",
     minutter: 25,
     proteinPerPorsjon: 32,
     porsjoner: 3,
@@ -94,6 +106,8 @@ export const retter: Rett[] = [
   {
     id: "bolognese",
     navn: "Spaghetti bolognese",
+    type: "kjøtt",
+    beskrivelse: "Kjøttsaus med tomat, løk og gulrot, servert med spaghetti og parmesan.",
     minutter: 35,
     proteinPerPorsjon: 30,
     porsjoner: 3,
@@ -111,6 +125,8 @@ export const retter: Rett[] = [
   {
     id: "kyllingkarri",
     navn: "Kyllinggryte med karri og ris",
+    type: "kylling",
+    beskrivelse: "Mild karrigryte med kylling, kokosmelk og paprika, servert med ris.",
     minutter: 30,
     proteinPerPorsjon: 38,
     porsjoner: 3,
@@ -127,6 +143,8 @@ export const retter: Rett[] = [
   {
     id: "torsk",
     navn: "Torsk med poteter og gulrøtter",
+    type: "fisk",
+    beskrivelse: "Torskefilet med smør, poteter og gulrøtter. Enkel og norsk.",
     minutter: 30,
     proteinPerPorsjon: 34,
     porsjoner: 3,
@@ -141,6 +159,8 @@ export const retter: Rett[] = [
   {
     id: "kjottkaker",
     navn: "Kjøttkaker i brun saus",
+    type: "kjøtt",
+    beskrivelse: "Kjøttkaker i brun saus med poteter, erter og tyttebær.",
     minutter: 35,
     proteinPerPorsjon: 28,
     porsjoner: 3,
@@ -156,6 +176,8 @@ export const retter: Rett[] = [
   {
     id: "pizza",
     navn: "Hjemmelaget pizza",
+    type: "kjøtt",
+    beskrivelse: "Hjemmelaget pizza med skinke, paprika og sjampinjong.",
     minutter: 30,
     proteinPerPorsjon: 30,
     porsjoner: 3,
@@ -172,6 +194,8 @@ export const retter: Rett[] = [
   {
     id: "omelett",
     navn: "Omelett med skinke og grønnsaker",
+    type: "egg",
+    beskrivelse: "Omelett med skinke, paprika og vårløk. Middag på et kvarter.",
     minutter: 15,
     proteinPerPorsjon: 28,
     porsjoner: 3,
@@ -187,6 +211,8 @@ export const retter: Rett[] = [
   {
     id: "kyllinglar",
     navn: "Kyllinglår i ovn med søtpotet",
+    type: "kylling",
+    beskrivelse: "Kyllinglår og søtpotet i ovnen, med rødløk og olivenolje.",
     minutter: 45,
     proteinPerPorsjon: 36,
     porsjoner: 3,
@@ -201,6 +227,8 @@ export const retter: Rett[] = [
   {
     id: "poke",
     navn: "Laks poke bowl",
+    type: "fisk",
+    beskrivelse: "Laks, ris, avokado, agurk og edamame i bolle.",
     minutter: 25,
     proteinPerPorsjon: 33,
     porsjoner: 3,
@@ -217,6 +245,8 @@ export const retter: Rett[] = [
   {
     id: "kremet-pasta",
     navn: "Kremet pasta med kylling og spinat",
+    type: "kylling",
+    beskrivelse: "Pasta i kremet saus med kylling, spinat og parmesan.",
     minutter: 25,
     proteinPerPorsjon: 40,
     porsjoner: 3,
@@ -233,6 +263,8 @@ export const retter: Rett[] = [
   {
     id: "chili",
     navn: "Chili con carne",
+    type: "kjøtt",
+    beskrivelse: "Chili con carne med bønner og tomat, servert med ris og rømme.",
     minutter: 40,
     proteinPerPorsjon: 35,
     porsjoner: 3,
@@ -250,6 +282,8 @@ export const retter: Rett[] = [
   {
     id: "fiskekaker",
     navn: "Fiskekaker med poteter og råkost",
+    type: "fisk",
+    beskrivelse: "Fiskekaker med kokte poteter og revet gulrot.",
     minutter: 25,
     proteinPerPorsjon: 22,
     porsjoner: 3,
@@ -264,6 +298,8 @@ export const retter: Rett[] = [
   {
     id: "burger",
     navn: "Hamburger",
+    type: "kjøtt",
+    beskrivelse: "Hjemmelaget burger med ost, salat, tomat og rødløk.",
     minutter: 25,
     proteinPerPorsjon: 32,
     porsjoner: 3,
@@ -280,6 +316,8 @@ export const retter: Rett[] = [
   {
     id: "linsesuppe",
     navn: "Linsesuppe med kokos",
+    type: "vegetar",
+    beskrivelse: "Mettende suppe med røde linser, kokos og tomat, servert med brød.",
     minutter: 30,
     proteinPerPorsjon: 18,
     porsjoner: 3,

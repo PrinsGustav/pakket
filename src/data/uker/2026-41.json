@@ -1,0 +1,18 @@
+{
+  "uke": "2026-41",
+  "eksempel": true,
+  "status": "meny",
+  "porsjoner": 3,
+  "middager": [
+    { "rettId": "laks-i-ovn", "dager": 1 },
+    { "rettId": "chili", "dager": 2 },
+    { "rettId": "kyllingwok", "dager": 1 },
+    { "rettId": "torsk", "dager": 1 },
+    { "rettId": "taco", "dager": 1 }
+  ],
+  "faste": ["Melk", "Grovbrød", "Bananer", "Egg"],
+  "ekstra": [
+    { "navn": "Kaffe", "mengde": 1, "enhet": "pk", "kategori": "Tørrvarer og hermetikk" }
+  ],
+  "notat": "Eksempeluke laget fra rettbanken. Den første ekte uka settes sammen i Claude Code."
+}
